@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laxmi Traders</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* Background image with zoom animation */
+    .bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1581090700227-3e43c8c1f0cb?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      animation: zoom 10s ease-in-out infinite alternate;
+      z-index: -2;
+    }
+
+    @keyframes zoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+
+    /* Particles container */
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    /* Centered text overlay */
+    .intro-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      text-shadow: 2px 2px 15px rgba(0,0,0,0.7);
+    }
+
+    .intro-text h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      letter-spacing: 3px;
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
+
+    .intro-text p {
+      font-size: 1.8rem;
+      opacity: 0;
+      animation: fadeInUp 2s ease forwards 1s;
+    }
+
+    .intro-text a {
+      color: #ffd700;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .intro-text a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Typing effect */
+    .typed-text {
+      border-right: 3px solid #ffd700;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg"></div>
+  <canvas id="particles"></canvas>
+
+  <div class="intro-text">
+    <h1>Laxmi Traders</h1>
+    <p class="typed-text" id="typed"></p>
+    <br>
+    <a href="form.html" target="_blank">Visit Now</a>
+  </div>
+
+  <script>
+    // Typing effect
+    const text = "Your Career, Our Commitment!";
+    let index = 0;
+    const typedElement = document.getElementById("typed");
+
+    function type() {
+      if(index < text.length){
+        typedElement.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type, 100);
+      }
+    }
+    type();
+
+    // Particles animation
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+    const particlesArray = [];
+
+    class Particle {
+      constructor(){
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+      }
+      update(){
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if(this.x > width) this.x = 0;
+        if(this.x < 0) this.x = width;
+        if(this.y > height) this.y = 0;
+        if(this.y < 0) this.y = height;
+      }
+      draw(){
+        ctx.fillStyle = "rgba(255,255,255,0.7)";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    function init(){
+      for(let i=0; i<100; i++){
+        particlesArray.push(new Particle());
+      }
+    }
+    init();
+
+    function animate(){
+      ctx.clearRect(0,0,width,height);
+      particlesArray.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('resize', ()=>{
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      particlesArray.length = 0;
+      init();
+    });
+  </script>
+</body>
+</html>

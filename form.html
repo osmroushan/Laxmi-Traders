@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Laxmi Traders</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="style.css">
+<link rel="shortcut icon"  href="laximi-removebg-preview.png" type="image/x-icon">
+</head>
+<body>
+     <h1>Laxmi Traders</h1>
+    <h1><img src="laximi-removebg-preview.png" alt=""></h1>
+  <div class="header">Application Form</div>
+  <div class="notice">All the fields must be filled carefully</div>
+
+  <div class="form-container">
+
+    <!-- Personal Info -->
+    <div class="section">Personal Information</div>
+    <div class="form-grid">
+      <input type="text" placeholder="Full Name (CAPITAL LETTERS)">
+      <input type="text" placeholder="Father’s/Husband’s Name">
+      <input type="date" placeholder="Date of Birth">
+      <select><option>Gender</option><option>Male</option><option>Female</option></select>
+      <select><option>Marital Status</option><option>Single</option><option>Married</option></select>
+      <select><option>Category</option><option>General</option><option>OBC</option><option>SC</option><option>ST</option></select>
+    </div>
+
+    <!-- Address -->
+    <div class="section">Present Address</div>
+    <div class="form-grid">
+      <input type="text" placeholder="Address Line 1">
+      <input type="text" placeholder="Address Line 2">
+      <select id="presentState"><option value="">Select State</option></select>
+      <select id="presentDistrict" disabled><option value="">Select District</option></select>
+      <select id="presentBlock" disabled><option value="">Select Block</option></select>
+      <input type="text" placeholder="Pincode">
+    </div>
+
+    <div class="section">Permanent Address</div>
+    <div class="form-grid">
+      <input type="text" placeholder="Address Line 1">
+      <input type="text" placeholder="Address Line 2">
+      <select id="permanentState"><option value="">Select State</option></select>
+      <select id="permanentDistrict" disabled><option value="">Select District</option></select>
+      <select id="permanentBlock" disabled><option value="">Select Block</option></select>
+      <input type="text" placeholder="Pincode">
+    </div>
+
+    <!-- Contact -->
+    <div class="form-grid">
+      <input type="text" placeholder="Mobile Number">
+      <input type="text" placeholder="Whatsapp Number">
+      <input type="email" placeholder="Email">
+    </div>
+
+    <!-- Education -->
+    <div class="section">Educational Details</div>
+    <table>
+      <tr>
+        <th>Sr. No.</th><th>Qualification</th><th>Year</th><th>Board/University</th><th>Max Marks</th><th>Obtained</th><th>%</th>
+      </tr>
+      <tr><td>1</td><td>10th</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td>2</td><td>12th</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td>3</td><td>Graduation</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td>4</td><td>Post-Graduation</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    </table>
+
+    <!-- Experience -->
+    <div class="section">Professional Experience</div>
+    <div class="form-grid">
+      <input type="text" placeholder="Employer Name">
+      <input type="text" placeholder="Designation">
+      <input type="text" placeholder="Nature of Duties">
+      <input type="text" placeholder="Duration (Years)">
+    </div>
+
+
+<!-- post details -->
+<div class="section">Post name</div>
+<div class="form-grid">
+    <select id="postSelect">
+        <option value="">Select Post</option>
+    </select>
+</div>
+
+    <!-- Upload -->
+    <div class="section">Upload Documents</div>
+    <div class="form-grid">
+      <label>Upload Profile Image: <input type="file"></label>
+      <label>Signature: <input type="file"></label>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button type="button">Review & Edit</button>
+      <button type="submit">Submit</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Copyright © 2025 Laxmi Traders.. All rights reserved.
+  </div>
+
+
+
+
+<script>
+    // Post details
+    const posts = [
+        "Data Entry Operator",
+        "MTs",
+        "Security Guard",
+        "Executive",
+        "Housekeeping"
+    ];
+
+    const postSelect = document.getElementById("postSelect");
+
+    // populate the post dropdown
+    posts.forEach(post => {
+        const option = document.createElement("option");
+        option.value = post;
+        option.textContent = post;
+        postSelect.appendChild(option);
+    });
+</script>
+
+
+
+
+  <script>
+    // Sample data for states, districts, blocks
+    const data = {
+      "Bihar": {
+          
+          "ARARIA": ["ARARIA", "BHARGAMA","FORBISGANJ","JOKIHAT","KURSAKANTA","NARPATGANJ","PALASI","RANIGANJ","SIKTI"],
+
+          "ARWAL": ["Arwal" ,"Arwal","Kaler","Karpi","Kurtha"],
+
+          "AURANGABAD(BIHAR)":  ["Aurangabad","Barun","Daudnagar","Deo","Goh","Haspura","Kutumba","Madanpur","Nabinagar","Obra","Rafiganj"],
+
+          "BANKA": ["Amarpur","Banka","Barahat","Bausi","Belhar","Chandan","Dhuraiya","Fullidumar","Katoria","Rajoun","Shambhuganj"],
+
+          "BEGUSARAI":  ["Begusarai","Barauni","Teghra","Matihani","Bachhwara","Mansurchak","Naokothi","Cheria Bariarpur","Sahebpur Kamal","Bakhri","Birpur","Dandari","Garhpura","Balia","Chhorahi","Khodawandpur","Bhagwanpur","Samho Akha Kurha"],
+
+
+          "BHAGALPUR": ["Bihpur","Gopalpur","Goradih","Ismailpur","Jagdishpur","Kahalgaon","Kharik","Narayanpur","Nathnagar","Naugachhia","Pirpainti","Rangra Chowk","Sabour","Shahkund","Sonhaula","Sultanganj"],
+
+
+          "BHOJPUR": ["Agiaon","Arrah","Barhara","Behea","Charpokhari","Garhani","Jagdishpur","Koilwar","Piro","Sahar","Sandesh","Shahpur","Tarari","Udwant Nagar"],
+
+          "BUXAR": ["Buxar", "Chausa", "Dumraon", "Itarhi", "Rajpur", "Sadar", "Simri", "Sikandarpur", "Nawanagar", "Buxar", "Chausa", "Dumraon", "Itarhi", "Rajpur", "Sadar", "Simri", "Sikandarpur", "Nawanagar"],
+
+          "DARBHANGA": ["Darbhanga", "Bahadurpur", "Biraul", "Biraul", "Benipur", "Darbhanga", "Goraul", "Hayaghat", "Kusheshwar Asthan", "Kusheshwar Asthan", "Manigachhi", "Madhubani", "Singhwara", "Tardih", "Bahadurpur", "Biraul", "Benipur", "Darbhanga", "Goraul", "Hayaghat", "Kusheshwar Asthan", "Kusheshwar Asthan", "Manigachhi", "Madhubani", "Singhwara", "Tardih"],
+
+          "GAYA": ["Gaya", "Atri", "Barachatti", "Bodhgaya", "Dumaria", "Gaya", "Goh", "Imamganj", "Kaler", "Kothi", "Manpur", "Madhuban", "Nawada", "Sherghati", "Sherghati", "Tekari", "Wazirganj"],
+
+          "GOPALGANJ":  ["Gopalganj", "Baikunthpur", "Bhatparrani", "Barauli", "Gopalganj", "Kuchaikot", "Maharajganj", "Maharajganj", "Pachrukhi", "Pachrukhi", "Sadar", "Thakrahan", "Urmil", "Urmil", "Sadar", "Thakrahan"],
+
+          "JAMUI":  ["Jamui", "Chakai", "Chakai", "Gidhaur", "Jamui", "Jhajha", "Khaira", "Lakhisarai", "Munger", "Munger", "Shahkund", "Shahkund", "Sadar", "Sadar", "Sadar", "Sadar", "Sadar", "Sadar"],
+
+          "JEHANABAD":  ["Jehanabad", "Ghosi", "Makhdumpur", "Maharajganj", "Barh", "Modanganj"],
+
+          "KAIMUR(BHABUA)": ["Bhabua", "Chainpur", "Durgawati", "Ramgarh", "Mohania", "Nauhatta", "Bhabhua Sadar", "Rajpur"],
+
+          "KATIHAR":  ["Katihar", "Barsoi", "Kadwa", "Pranpur", "Manihari", "Balrampur", "Hasanganj", "Sadar"],
+
+          "KHAGARIA": ["Khagaria", "Mansi", "Beldaur", "Parbatta", "Sadar", "Jamui"],
+
+          "LAKHISARAI": ["Lakhisarai", "Ramgarh Chowk", "Barahiya", "Surajgarha", "Sheikhpura"],
+
+          "MADHEPURA":  ["Madhepura", "Alamnagar", "Bihariganj", "Murliganj", "Sakhi", "Udaikpur"],
+
+          "MADHUBANI":  ["Madhubani", "Benipatti", "Jhanjharpur", "Pipra", "Phulparas", "Khajauli", "Bhanpura", "Harlakhi", "Ladania", "Laukaha", "Kaluahi"],
+
+          "MUNGER": ["Munger", "Bari Sangrampur", "Chandwara", "Kharagpur", "Lakhisarai", "Sadar", "Sikandra"],
+
+          "MUZAFFARPUR":  ["Muzaffarpur", "Baruraj", "Paroo", "Sahebganj", "Bihariganj", "Meghnagar", "Motipur", "Marwan", "Sadar", "Kanti", "Katarigaon", "Gharaul"],
+
+          "NALANDA":  ["Rajgir", "Bihar Sharif", "Harnaut", "Islampur", "Hilsa", "Ekangarsarai", "Patepur", "Asthawan", "Barh", "Sadar"],
+
+          "NAWADA": ["Nawada", "Hisua", "Sikandra", "Rajauli", "Warisaliganj", "Narhat", "Gobindpur", "Meskaur"],
+
+          "PASHCHIM CHAMPARAN ": ["Narkatiaganj", "Bagaha", "Sidhaw", "Ramnagar", "Bairiya", "Thakrahan", "Motihari", "Chakia", "Mainatand", "Ramnagar Sadar"],
+
+          "PATNA ": ["Patna Sadar", "Fatuha", "Digha", "Maner", "Danapur", "Bakhtiarpur", "Punpun", "Paliganj", "Barh", "Masaurhi", "Phulwari"],
+
+          "PURBA CHAMPARAN": ["Motihari", "Chakia", "Raxaul", "Pipra", "Harsidhi", "Patahi", "Sugauli", "Kesaria", "Gawnaha", "Bhittamore"],
+
+          "PURNIA": ["Purnia Sadar", "Banmankhi", "Rupauli", "Dhamdaha", "Krityanand Nagar", "Baisi", "Amour", "Sikti", "Kasba", "Bhawanipur", "Purnia City"],
+
+          "ROHTAS":  ["Sasaram", "Dehri", "Bhabua", "Chenari", "Nokha", "Karakat", "Obra", "Dumraon"],
+
+          "SAHARSA":  ["Saharsa Sadar", "Simri Bakhtiyarpur", "Mahishi", "Sonbarsa", "Banma Itahri", "Madhepur", "Forbesganj"],
+
+          "SAMSTIPUR":  ["Samastipur Sadar", "Rosera", "Dalsinghsarai", "Ujiarpur", "Sarairanjan", "Morwa", "Kalyanpur", "Bibhutipur", "Tendua"],
+
+          "SARAN":  ["Chhapra", "Marhaura", "Sonepur", "Dighwara", "Manjhi", "Garkha", "Piprahi"],
+
+          "SHEIKHPURA":  ["Sheikhpura", "Chewara", "Barbigha", "Amaq"],
+
+          "SIWAN": ["Siwan Sadar", "Goriakothi", "Hussainganj", "Daraundha", "Barharia", "Maharajganj", "Siswan"],
+
+          "SHEOHAR":  ["Sheohar", "Piprahi", "Dumri-Katiha", "Mahisi"],
+
+          "SITAMARHI": ["Sitamarhi Sadar", "Bairgania", "Runnisaidpur", "Suppi", "Belsand", "Pupri", "Majorganj"],
+
+          "SUPAUL": ["Supaul Sadar", "Triveniganj", "Birpur", "Nirmali", "Saraigarh-Bhaptiyahi", "Basantpur", "Kishanpur"],
+
+          "VAISAHLI":  ["Hajipur", "Mahua", "Desari", "Goraul", "Jandaha", "Patepur", "Bidupur", "Bariyarpur", "Chehrakala", "Rajapakar"],
+      },
+    };
+
+    function setupDropdowns(stateId, districtId, blockId) {
+      const stateEl = document.getElementById(stateId);
+      const districtEl = document.getElementById(districtId);
+      const blockEl = document.getElementById(blockId);
+
+      // populate states
+      for (let st in data) {
+        let opt = document.createElement("option");
+        opt.value = st;
+        opt.textContent = st;
+        stateEl.appendChild(opt);
+      }
+
+      stateEl.addEventListener("change", function() {
+        const st = this.value;
+        districtEl.innerHTML = `<option value="">Select District</option>`;
+        blockEl.innerHTML = `<option value="">Select Block</option>`;
+        blockEl.disabled = true;
+
+        if (st) {
+          districtEl.disabled = false;
+          for (let dist in data[st]) {
+            let opt = document.createElement("option");
+            opt.value = dist;
+            opt.textContent = dist;
+            districtEl.appendChild(opt);
+          }
+        } else {
+          districtEl.disabled = true;
+        }
+      });
+
+      districtEl.addEventListener("change", function() {
+        const st = stateEl.value;
+        const dist = this.value;
+        blockEl.innerHTML = `<option value="">Select Block</option>`;
+
+        if (dist) {
+          blockEl.disabled = false;
+          for (let bl of data[st][dist]) {
+            let opt = document.createElement("option");
+            opt.value = bl;
+            opt.textContent = bl;
+            blockEl.appendChild(opt);
+          }
+        } else {
+          blockEl.disabled = true;
+        }
+      });
+    }
+
+    // initialize for both present & permanent address
+    setupDropdowns("presentState", "presentDistrict", "presentBlock");
+    setupDropdowns("permanentState", "permanentDistrict", "permanentBlock");
+  </script>
+</body>
+</html>
